@@ -17,13 +17,18 @@ class Home extends CI_Controller
     {
         $sesion = ($this->session->userdata('usuario'));
 
-        echo $sesion;
         if (!isset  ($sesion) || $sesion == '' || $sesion == NULL) {
             redirect(base_url('login', 'refresh'));
         }
         $session = $this->session->userdata('usuario');
+        //Esta seccion es donde se declara la vista con un arreglo que componen los componenetes principales del template
+        $dato['contenido'] = 'componentes/inicio';
+        $dato['header'] = 'componentes/header';
+        $dato['titulo'] = 'Inicio';
+
+
         //Con esta varible es como se debe puede pasar la variable de sesion $session
-        $this->load->view('index');
+        $this->load->view('index',$dato);
 
     }
 }
