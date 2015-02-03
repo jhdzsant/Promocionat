@@ -22,47 +22,56 @@ class Cliente extends CI_Controller{
             redirect(base_url('login', 'refresh'));
         }
 
-        $dato['contenido'] = 'cliente/clienteconsulta';
-        $dato['header'] = 'componentes/header';
-        $dato['sidebar'] = 'partials/sidebar';
-
-        $dato['titulo'] = 'Clientes';
-
-        $this->load->view('index',$dato);
-
     }
     function getCliente(){
-        $respuesta = $this->clientemodelo->getCliente();
-        print $respuesta;
+
+            $cliente = $this->clientemodelo->getCliente();
+            $dato['contenido'] = 'cliente/clienteconsulta';
+            $dato['header'] = 'componentes/header';
+            $dato['titulo'] = 'Clientes';
+            $dato['cliente'] = $cliente;
+            $this->load->view('index',$dato);
+
 
     }
+    /* En esta seccion hace referencia a la vista de alta de Clientes */
     function altaCliente()
     {
-        $dato['contenido'] = 'cliente/altaCliente';
-        $dato['header'] = 'partials/header';
+        $dato['contenido'] = 'cliente/clientealta';
+        $dato['header'] = 'componentes/header';
         $dato['sidebar'] = 'partials/sidebar';
-        $dato['footer'] = 'partials/footer';
-        $dato['menu_items'] = 'partials/menu_items';
-        $dato['titulo'] = 'Alta Clientes';
-        $dato['menu_items_sm'] = 'partials/menu_items_sm';
-        $this->load->view('template',$dato);
+        $dato['titulo'] = 'Clientes';
+        $this->load->view('index',$dato);
     }
-
+    /* Fin de Seccion */
+    /* En esta seccion hace carga los datos de la vista de cliente */
     function addCliente(){
 
+        $nombre      = $this->input->post('nombre');
+        $clave       = $this->input->post('clave');
+        $estatus     = $this->input->post('estatus');
+        $rfc         = $this->input->post('rfc');
+        $calle       = $this->input->post('calle');
+        $colonia     = $this->input->post('colonia');
+        $codigoPostal= $this->input->post('codigoPostal');
+        $municipio   = $this->input->post('municipio');
+        $estado      = $this->input->post('estado');
+        $pais        = $this->input->post('pais');
+        $telefonoCliente = $this->input->post('telefonoCliente');
+        $nombreContacto  = $this->input->post('nombreContacto');
+        $telefonoContacto = $this->input->post('telefonoContacto');
+        $emailContacto   = $this->input->post('emailContacto');
 
-        $nombreCliente  = $this->input->post('nombreCliente');
-        $rfcCliente     = $this->input->post('rfcCliente');
-        $statusCliente   = $this->input->post('statusCliente');
-        $telefonoCliente= $this->input->post('telefonoCliente');
-        $dato = $this->clientemodelo->addCliente($nombreCliente, $rfcCliente,$statusCliente,$telefonoCliente);
+
+        $dato = $this->clientemodelo->addCliente($clave, $estatus,$nombre ,$rfc ,$calle ,$colonia ,$codigoPostal,$municipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto);
         if($dato = TRUE){
-            redirect(base_url('cliente/altaCliente'));
+            redirect(base_url('cliente/clientealta'));
 
         }else{
             echo "Ocurrio un error";
         }
     }
+    /* Fin de Seccion */
 
     function updUsuario(){
         $id          = $this->input->post('id');

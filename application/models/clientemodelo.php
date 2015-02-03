@@ -18,18 +18,27 @@ class ClienteModelo extends CI_Model{
             foreach ($consulta->result() as $fila) {
                 $data[] = $fila;
             }
-            $json_response = json_encode($data);
-            return $json_response;
+           return $data;
 
         }
     }
 
     function addCliente($nombreCliente, $rfcCliente,$statusCliente, $telefonoCliente){
         $insert = array(
-            "nombreCliente"    => $nombreCliente,
-            "rfcCliente"       => $rfcCliente,
-            "statusCliente"    => $statusCliente,
-            "telefonoCliente"  => $telefonoCliente
+            "clave"    => $clave,
+            "estatus" => $estatus,
+            "nombre" => $nombre,
+            "rfc" => $rfc,
+            "calle" => $calle,
+            "colonia" => $colonia,
+            "codigoPostal" => $codigoPostal,
+            "municipio" => $municipio,
+            "estado" => $estado,
+            "pais" =>  $pais,
+            "telefonoCliente" => $telefonoCliente,
+            "nombreContato" => $nombreContacto,
+            "telefonoContacto" => $telefonoContacto,
+            "emailContacto" => $emailContacto
         );
         $this->db->insert('cliente', $insert);
         return true;

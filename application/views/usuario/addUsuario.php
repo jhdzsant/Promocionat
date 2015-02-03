@@ -6,43 +6,44 @@
             <div class="col-lg-12">
                 <fieldset>
                     <h4>
-                        Sign-up
+                        Registro de Usuario
+                        <p></p>
                     </h4>
                     <div class="control-group">
-                        <label class="control-label"  for="username">Username</label>
+                        <label class="control-label"  for="username">Nombre de Usuario</label>
                         <div class="controls">
                             <input type="text" id="username" name="username" placeholder="" class="form-control input-lg">
-                            <p class="small help-block">Username can contain any letters or numbers, without spaces</p>
+                            <p></p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="email">E-mail</label>
+                        <label class="control-label" for="email">Correo Electrónico</label>
                         <div class="controls">
                             <input type="email" id="email" name="email" placeholder="" class="form-control input-lg">
-                            <p class="small help-block">Please provide your E-mail</p>
+                            <p class="small help-block"></p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label" for="password">Password</label>
+                        <label class="control-label" for="password">Contraseña</label>
                         <div class="controls">
                             <input type="password" id="password" name="password" placeholder="" class="form-control input-lg">
-                            <p class="small help-block">Password should be at least 6 characters</p>
+                            <p class="small help-block"></p>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label class="control-label"  for="password_confirm">Password (confirm)</label>
+                        <label class="control-label"  for="password_confirm">Contraseña (confirme)</label>
                         <div class="controls">
                             <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="form-control input-lg">
-                            <p class="small help-block">Type your password again to confirm</p>
+                            <p class="small help-block">Repita su contraseña</p>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <div class="controls">
-                            <button class="btn btn-success" type="submit">Register</button>
+                            <button class="btn btn-success" type="submit">Registrar</button>
                         </div>
                     </div>
                 </fieldset>

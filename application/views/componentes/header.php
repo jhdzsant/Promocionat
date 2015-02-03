@@ -52,13 +52,13 @@
                 </li>
                 <!-- Seccion de Usuarios -->
                 <li>
-                    <a href="#"><i class="fa fa-users fa-fw"></i> Clientes<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-male fa-fw"></i> Cliente<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?= base_url('usuario/getUsuarios') ?>">Consulta</a>
+                            <a href="<?= base_url('cliente/altaCliente') ?>">Alta</a>
                         </li>
                         <li>
-                            <a href="<?= base_url('usuario/vistaAddUsuario') ?>">Alta</a>
+                            <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
