@@ -50,12 +50,29 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                <!-- Seccion de Usuarios -->
+
+
+                <!-- Seccion de clientes -->
                 <li>
                     <a href="#"><i class="fa fa-male fa-fw"></i> Cliente<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="<?= base_url('cliente/altaCliente') ?>">Alta</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+
+
+                <!-- Seccion de empleados-->
+                <li>
+                    <a href="#"><i class="fa fa-male fa-fw"></i> Empleados<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?= base_url('empleados/empleadosAlta') ?>">Alta</a>
                         </li>
                         <li>
                             <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>

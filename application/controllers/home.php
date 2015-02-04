@@ -20,6 +20,7 @@ class Home extends CI_Controller
         if (!isset  ($sesion) || $sesion == '' || $sesion == NULL) {
             redirect(base_url('login', 'refresh'));
         }
+
         $session = $this->session->userdata('usuario');
         //Esta seccion es donde se declara la vista con un arreglo que componen los componenetes principales del template
         $dato['contenido'] = 'componentes/inicio';
