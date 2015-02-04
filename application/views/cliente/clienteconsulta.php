@@ -4,14 +4,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default" ng-controller="usuariosCtrl">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <a id="refreshUserList" class="pull-right refresh-me" data-target="#userListPanel" href="javascript:;"><span class="fa fa-refresh"></span></a>
                         <h4>Clientes</h4>
                     </div>
                     <div class="panel-body panel-refresh" id="userListPanel">
                         <div class="table-responsive" ng-show="filteredItems > 0">
-                            <table id="user-signups" class="table table-striped table-bordered">
+                            <table id="user-signups" class="table table-striped table-bordered" id="dataTables-example">
                                 <thead>
                                 <tr>
                                     <th class="hidden-xs">Id</th>
@@ -36,21 +36,21 @@
                                 <?php foreach($cliente as $fila){ ?>
 
                                     <tr>
-                                        <td><?php echo  $fila->idCliente ?></td>
-                                        <td><?php echo $fila->clave ?></td>
-                                        <td> <?php echo $fila->estatus ?> </td>
-                                        <td> <?php echo $fila->nombre ?> </td>
-                                        <td> <?php echo $fila->rfc ?> </td>
-                                        <td> <?php echo $fila->calle ?> </td>
-                                        <td> <?php echo $fila->colonia ?> </td>
-                                        <td> <?php echo $fila->codigoPostal ?> </td>
-                                        <td> <?php echo $fila->municipio ?> </td>
-                                        <td> <?php echo $fila->estado ?> </td>
-                                        <td> <?php echo $fila->pais ?> </td>
-                                        <td> <?php echo $fila->telefonoCliente ?> </td>
-                                        <td> <?php echo $fila->nombreContacto ?> </td>
-                                        <td> <?php echo $fila->telefonoContacto ?> </td>
-                                        <td> <?php echo $fila->emailContacto ?> </td>
+                                        <td id="idCliente"><?php echo  $fila->idCliente ?></td>
+                                        <td id="clave"><?php echo $fila->clave ?></td>
+                                        <td id="estatus"> <?php echo $fila->estatus ?> </td>
+                                        <td id="nombre"> <?php echo $fila->nombre ?> </td>
+                                        <td id="rfc"> <?php echo $fila->rfc ?> </td>
+                                        <td id="calle"> <?php echo $fila->calle ?> </td>
+                                        <td id="colonia"> <?php echo $fila->colonia ?> </td>
+                                        <td id="codigoPostal"> <?php echo $fila->codigoPostal ?> </td>
+                                        <td id="municipio"> <?php echo $fila->municipio ?> </td>
+                                        <td id="estado"> <?php echo $fila->estado ?> </td>
+                                        <td id="pais"> <?php echo $fila->pais ?> </td>
+                                        <td id="telefonoCliente"> <?php echo $fila->telefonoCliente ?> </td>
+                                        <td id="nombreContacto"> <?php echo $fila->nombreContacto ?> </td>
+                                        <td id="telefonoContacto"> <?php echo $fila->telefonoContacto ?> </td>
+                                        <td id="emailContacto"> <?php echo $fila->emailContacto ?> </td>
 
                                     </tr>
                                 <?php } ?>
@@ -82,3 +82,11 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="myApp" ng-app lang="en">
+<html ng-app="myApp" lang="es">
 
 <head>
 
@@ -39,6 +39,10 @@
     <![endif]-->
 
 
+    <!-- <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script> -->
+   <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script> -->
+    <script src="js/app.js"></script>
+    <script src="js/angular.min.js"></script>
 </head>
 
 <body>
@@ -71,6 +75,8 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="http://localhost/Promocionat/dist/js/sb-admin-2.js"></script>
+
+
 
 
 </body>

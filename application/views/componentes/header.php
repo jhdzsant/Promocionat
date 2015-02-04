@@ -62,6 +62,9 @@
                         <li>
                             <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>
                         </li>
+                        <li>
+                            <a href="<?= base_url('cliente/vistaAngu') ?>">ConsultaA</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
@@ -80,6 +83,7 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

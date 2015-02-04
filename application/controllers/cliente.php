@@ -65,7 +65,7 @@ class Cliente extends CI_Controller{
 
         $dato = $this->clientemodelo->addCliente($clave, $estatus,$nombre ,$rfc ,$calle ,$colonia ,$codigoPostal,$municipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto);
         if($dato = TRUE){
-            redirect(base_url('cliente/clientealta'));
+            redirect(base_url('cliente/altaCliente'));
 
         }else{
             echo "Ocurrio un error";
@@ -94,6 +94,21 @@ class Cliente extends CI_Controller{
         } else {
             echo "Ocurrio un error";
         }
+    }
+
+    function vistaAngu()
+    {
+
+        $dato['contenido'] = 'cliente/clienteAngular';
+        $dato['header'] = 'componentes/header';
+        $dato['sidebar'] = 'partials/sidebar';
+        $dato['titulo'] = 'Clientes';
+        $this->load->view('index',$dato);
+    }
+
+    function angular(){
+        $cliente = $this->clientemodelo->getCliente();
+        print json_encode($cliente);
     }
 
 }

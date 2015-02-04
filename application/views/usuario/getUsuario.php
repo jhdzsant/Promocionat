@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="panel panel-default" ng-controller="usuariosCtrl">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <a id="refreshUserList" class="pull-right refresh-me" data-target="#userListPanel" href="javascript:;"><span class="fa fa-refresh"></span></a>
                         <h4>Usuarios</h4>

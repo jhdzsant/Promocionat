@@ -23,7 +23,7 @@ class ClienteModelo extends CI_Model{
         }
     }
 
-    function addCliente($nombreCliente, $rfcCliente,$statusCliente, $telefonoCliente){
+    function addCliente($clave, $estatus,$nombre ,$rfc ,$calle ,$colonia ,$codigoPostal,$municipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto){
         $insert = array(
             "clave"    => $clave,
             "estatus" => $estatus,
@@ -36,7 +36,7 @@ class ClienteModelo extends CI_Model{
             "estado" => $estado,
             "pais" =>  $pais,
             "telefonoCliente" => $telefonoCliente,
-            "nombreContato" => $nombreContacto,
+            "nombreContacto" => $nombreContacto,
             "telefonoContacto" => $telefonoContacto,
             "emailContacto" => $emailContacto
         );
