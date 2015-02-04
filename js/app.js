@@ -1,9 +1,9 @@
 /**
  * Created by Juls on 04/02/2015.
  */
-var app = angular.module('myApp', []);
+angular.module('myApp', [])
 
-app.filter('startFrom', function() {
+.filter('startFrom', function() {
     return function(input, start) {
         if(input) {
             start = +start; //parse to int
@@ -11,8 +11,8 @@ app.filter('startFrom', function() {
         }
         return [];
     }
-});
-app.controller('ClienteController', function ($scope, $http, $timeout) {
+})
+.controller('ClienteController', function ($scope, $http, $timeout) {
     $http.get('http://localhost/Promocionat/cliente/angular').success(function(data){
         $scope.list = data;
         $scope.currentPage = 1; //current page

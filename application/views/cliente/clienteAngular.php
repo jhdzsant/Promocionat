@@ -25,6 +25,7 @@
                     <h5>Filtrados {{ filtered.length }} of {{ totalItems}} total de Clientes</h5>
                 </div>
             </div>
+            </br>
             <div class="table-responsive" ng-show="filteredItems > 0">
                 <table id="user-signups" class="table table-striped table-bordered">
                     <thead>

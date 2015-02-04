@@ -10,7 +10,7 @@
                         <h4>Clientes</h4>
                     </div>
                     <div class="panel-body panel-refresh" id="userListPanel">
-                        <div class="table-responsive" ng-show="filteredItems > 0">
+                        <div class="table-responsive">
                             <table id="user-signups" class="table table-striped table-bordered" id="dataTables-example">
                                 <thead>
                                 <tr>
@@ -59,10 +59,10 @@
                                 <tr><td colspan="6">
                                         <div class="text-center">
                                             <ul class="pagination">
-                                                <li ng-class="{disabled: currentPage == 0}">
-                                                    <a class="btn btn-default btn-sm" href="" ng-click=""><i class=" fa fa-angle-left"></i> Prev</a>
+                                                <li >
+                                                    <a class="btn btn-default btn-sm" ><i class=" fa fa-angle-left"></i> Prev</a>
                                                 </li>
-                                                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                                                <li >
                                                     <a class="btn btn-default btn-sm" href="" ng-click="">Next <i class="fa fa-angle-right"></i></a>
                                                 </li>
                                             </ul>
