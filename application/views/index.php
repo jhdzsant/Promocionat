@@ -40,9 +40,9 @@
 
 
     <!-- <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script> -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script> -->
     <script src="js/app.js"></script>
-    <!-- <script src="js/angular.min.js"></script>-->
+    <script src="js/angular.min.js"></script>
 </head>
 
 <body>

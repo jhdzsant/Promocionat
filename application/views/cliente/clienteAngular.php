@@ -22,7 +22,7 @@
                     <input type="text" ng-model="search" ng-change="filter()" placeholder="Filtrar" class="form-control" />
                 </div>
                 <div class="col-md-4">
-                    <h5>Filtrados {{ filtered.length }} of {{ totalItems}} total de Clientes</h5>
+                    <h5>Filtrados {{ filtered.length }} de {{ totalItems}} total de Clientes</h5>
                 </div>
             </div>
             </br>
@@ -30,22 +30,40 @@
                 <table id="user-signups" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th class="hidden-xs">Id del Cliente&nbsp;<a ng-click="sort_by('idCliente')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Clave&nbsp;<a ng-click="sort_by('clave')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Estatus del Cliente&nbsp;<a ng-click="sort_by('estatus')"><i class="glyphicon glyphicon-sort"></i></a></th>
                         <th class="hidden-xs">Nombre del Cliente&nbsp;<a ng-click="sort_by('nombre')"><i class="glyphicon glyphicon-sort"></i></a></th>
                         <th class="hidden-xs">RFC del Cliente&nbsp;<a ng-click="sort_by('rfc')"><i class="glyphicon glyphicon-sort"></i></a></th>
-                        <th class="hidden-xs">Estatus del Cliente&nbsp;<a ng-click="sort_by('estatus')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Calle&nbsp;<a ng-click="sort_by('calle')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Colonia&nbsp;<a ng-click="sort_by('colonia')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Código Postal&nbsp;<a ng-click="sort_by('codigoPostal')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Municipio&nbsp;<a ng-click="sort_by('municipio')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Estado&nbsp;<a ng-click="sort_by('estado')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">País&nbsp;<a ng-click="sort_by('pais')"><i class="glyphicon glyphicon-sort"></i></a></th>
                         <th class="hidden-xs">Telefono del Cliente&nbsp;<a ng-click="sort_by('telefonoCliente')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Nombre del Contacto&nbsp;<a ng-click="sort_by('nombreContacto')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">Telefono del Contacto&nbsp;<a ng-click="sort_by('telefonoContacto')"><i class="glyphicon glyphicon-sort"></i></a></th>
+                        <th class="hidden-xs">E-mail del Contacto&nbsp;<a ng-click="sort_by('emailContacto')"><i class="glyphicon glyphicon-sort"></i></a></th>
                     </tr>
                     </thead>
                     <tbody class="refresh-container">
 
 
                     <tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate :reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-                        <td>{{data.idCliente}}</td>
+                        <td>{{data.clave}}</td>
+                        <td>{{data.estatus}}</td>
                         <td>{{data.nombre}}</td>
                         <td>{{data.rfc}}</td>
-                        <td>{{data.estatus}}</td>
+                        <td>{{data.calle}}</td>
+                        <td>{{data.colonia}}</td>
+                        <td>{{data.codigoPostal}}</td>
+                        <td>{{data.municipio}}</td>
+                        <td>{{data.estado}}</td>
+                        <td>{{data.pais}}</td>
                         <td>{{data.telefonoCliente}}</td>
+                        <td>{{data.nombreContacto}}</td>
+                        <td>{{data.telefonoContacto}}</td>
+                        <td>{{data.emailContacto}}</td>
                     </tr>
 
                     </tbody>
