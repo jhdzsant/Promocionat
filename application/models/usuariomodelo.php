@@ -37,22 +37,36 @@ class UsuarioModelo extends CI_Model{
         return true;
     }
 
-    function updUsuario($email, $password, $id){
-        $upd = array(
-            "email"    => $email,
-            "password" => $password
-        );
-        $this->db->where('id',$id);
+
+
+    function actualizarUsuario( $id, $upd ){
+        
+        $this->db->where('id', $id);
         $this->db->update('users', $upd);
+
         return true;
     }
 
-    function delUsuario($id){
-        $upd = array(
-            "activo" => 0
+    function borrarUsuario($id){
+        // Se crea un arreglo con los datos que iran en el where
+        // en este caso se necesita que el id del usuario sea igual al que mando la url
+        $where = array(
+            "id" => $id
         );
-        $this->db->where('id_usuario', $id_usuario);
-        $this->db->update('usuario',$upd);
+        $this->db->where($where);
+        $this->db->delete('users');
+        // esto haria la sentencia: DELETE FROM users where id = $id;
         return true;
+    }
+
+    function buscarPorId( $id ){
+
+        $this->db->select('*');
+
+        $this->db->from('users');
+
+        $this->db->where('id' , $id);
+
+        return $this->db->get()->row();
     }
 }
