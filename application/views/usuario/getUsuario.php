@@ -17,15 +17,17 @@
                                     <th class="hidden-xs">Id</th>
                                     <th class="hidden-xs">Email</th>
                                     <th>Password</th>
+                                    <th>Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody class="refresh-container">
                                 <?php foreach($usuario as $fila){ ?>
 
                                     <tr>
-                                        <td class="hidden-xs" ng-click=""><?php echo  $fila->id ?></td>
+                                        <td class="hidden-xs" ng-click=""><?php echo  $fila->id;?></td>
                                         <td class="hidden-xs" ng-click=""><?php echo $fila->email ?></td>
                                         <td> <?php echo $fila->password ?> </td>
+                                        <td> <a href= <?= "'".base_url('usuario/editarUsuario/')."/".$fila->id."'";?> > <button type="button" class="btn btn-primary">Editar</button> </a> <a href= <?= "'".base_url('usuario/borrarUsuario/')."/".$fila->id."'";?> ><button type="button" class="btn btn-danger">Eliminar</button></a>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
