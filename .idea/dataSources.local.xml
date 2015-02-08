@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - promocionat@localhost" uuid="a9ce7792-9b0c-485e-917d-1f02aff626cd">
+    <data-source name="MySQL - promoat@localhost" uuid="83514bc2-54e2-4807-bef6-fee612bf44fe">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>promocionat.*</schema-pattern>
-      <default-schemas>promocionat.*</default-schemas>
+      <schema-pattern>promoat.*</schema-pattern>
+      <default-schemas>promoat.*</default-schemas>
     </data-source>
   </component>
 </project>

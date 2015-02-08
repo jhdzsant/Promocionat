@@ -18,22 +18,10 @@ class UsuarioModelo extends CI_Model{
 
     function addUsuario($email, $password){
         $insert = array(
-            "clave"    => $clave,
-            "estatus" => $estatus,
-            "nombre" => $nombre,
-            "rfc" => $rfc,
-            "calle" => $calle,
-            "colonia" => $colonia,
-            "codigoPostal" => $codigoPostal,
-            "municipio" => $municipio,
-            "estado" => $estado,
-            "pais" =>  $pais,
-            "telefonoCliente" => $telefonoCliente,
-            "nombreContato" => $nombreContacto,
-            "telefonoContacto" => $telefonoContacto,
-            "emailContacto" => $emailContacto
+            "email"    => $email,
+            "password" => $password
         );
-        $this->db->insert('cliente', $insert);
+        $this->db->insert('users', $insert);
         return true;
     }
 

@@ -37,6 +37,9 @@
                     </div>
                 </form>
             </div><!--/modal-body-->
+            <div ng-show="flash">
+                <div data-alert class="alert-box alert round">{{ flash }}</div>
+            </div>
         </div><!--/modal-content-->
 
     </div><!--/dialog-->

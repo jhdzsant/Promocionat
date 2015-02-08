@@ -71,7 +71,7 @@
             </div> <!--/.table-responsive-->
             <div class="col-md-12" ng-show="filteredItems == 0">
                 <div class="col-md-12">
-                    <h4>No customers found</h4>
+                    <h4>No existen Clientes</h4>
                 </div>
             </div>
             <div class="col-md-12" ng-show="filteredItems > 0">

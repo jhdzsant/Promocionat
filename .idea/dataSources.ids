@@ -1,104 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - promocionat@localhost" uuid="a9ce7792-9b0c-485e-917d-1f02aff626cd">
+  <data-source name="MySQL - promoat@localhost" uuid="83514bc2-54e2-4807-bef6-fee612bf44fe">
     <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
-    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
-    <schema name="" catalog="promocionat"/>
-    <table name="articulo" schema="" catalog="promocionat" type="TABLE">
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="promoat"/>
+    <table name="articulo" schema="" catalog="promoat" type="TABLE">
       <column name="idArticulo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="clave" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="descripcion" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idArticulo,clave"/>
-      <exported-key name="fkarticulo" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idArticulo"/>
+      <exported-key name="fkarticulo" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idArticulo"/>
     </table>
-    <table name="cliente" schema="" catalog="promocionat" type="TABLE">
+    <table name="civil" schema="" catalog="promoat" type="TABLE">
+      <column name="idCivil" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idCivil"/>
+      <exported-key name="fkempleadoscivil" table="empleados" schema="" catalog="promoat" columns="idCivil"/>
+    </table>
+    <table name="cliente" schema="" catalog="promoat" type="TABLE">
       <column name="idCliente" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="clave" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="estatus" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="nombre" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
       <column name="rfc" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
-      <column name="calle" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="colonia" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
-      <column name="codigoPostal" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="municipio" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="estado" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="pais" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="telefonoCliente" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="nombreContacto" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="telefonoContacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="emailContacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idCliente,clave"/>
-      <exported-key name="fkcliente" table="orden_trabajo" schema="" catalog="promocionat" columns="idCliente"/>
+      <foreign-key name="fkclientedomicilios" columns="idDomicilios" ref-table="domicilios" ref-schema="" ref-catalog="promoat" ref-columns="idDomicilios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkcliente" table="orden_trabajo" schema="" catalog="promoat" columns="idCliente"/>
+      <index name="fkclientedomicilios" unique="false" columns="idDomicilios"/>
     </table>
-    <table name="departamento" schema="" catalog="promocionat" type="TABLE">
+    <table name="departamento" schema="" catalog="promoat" type="TABLE">
       <column name="idDepartamento" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="descripcion" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idDepartamento"/>
-      <exported-key name="fkdepartamento" table="empleados" schema="" catalog="promocionat" columns="idDepartamento"/>
+      <exported-key name="fkdepartamento" table="empleados" schema="" catalog="promoat" columns="idDepartamento"/>
     </table>
-    <table name="empleados" schema="" catalog="promocionat" type="TABLE">
+    <table name="domicilios" schema="" catalog="promoat" type="TABLE">
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="calleNumero" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="colonia" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="delegacionMunicipio" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="estado" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="codigoPostal" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pais" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idDomicilios"/>
+      <exported-key name="fkclientedomicilios" table="cliente" schema="" catalog="promoat" columns="idDomicilios"/>
+      <exported-key name="fkempleadosdomicilios" table="empleados" schema="" catalog="promoat" columns="idDomicilios"/>
+      <exported-key name="fkmaquiladordomicilios" table="maquilador" schema="" catalog="promoat" columns="idDomicilios"/>
+      <exported-key name="fkorden_trabajodomicilios" table="orden_trabajo" schema="" catalog="promoat" columns="idDomicilios"/>
+      <exported-key name="fkproveedordomicilio" table="proveedor" schema="" catalog="promoat" columns="idDomicilios"/>
+    </table>
+    <table name="empleados" schema="" catalog="promoat" type="TABLE">
       <column name="idEmpleado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="nombre" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="apellidoPaterno" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="apellidoMaterno" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="idDepartamento" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="correoElectronico" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
-      <column name="contraseña" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
-      <column name="idPerfil" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="calle" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="colonia" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="municipio" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="estado" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idPuesto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idTurno" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idNivelEstudios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="profesion" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="sueldoMensual" sqlType="DOUBLE" precision="30" scale="0" nullable="true" jdbcType="8"/>
+      <column name="contrato" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
       <column name="fechaAlta" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
       <column name="fechaBaja" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="idStatusEmpleado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idPerfil" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="correoElectronico" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="contraseña" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="telCelular" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="telCasa" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="rfc" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
-      <column name="puesto" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
       <column name="imss" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
-      <column name="contrato" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
-      <column name="turno" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
-      <column name="edoCivil" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idCivil" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="tipoSangre" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="pesionAlimen" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
-      <column name="nivelEstudios" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
-      <column name="profesion" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="nombreEmergencia" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="telEmergencia" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idEmpleado"/>
-      <foreign-key name="fkdepartamento" columns="idDepartamento" ref-table="departamento" ref-schema="" ref-catalog="promocionat" ref-columns="idDepartamento" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fkempleado" table="orden_trabajo" schema="" catalog="promocionat" columns="idEmpleado"/>
+      <foreign-key name="fkdepartamento" columns="idDepartamento" ref-table="departamento" ref-schema="" ref-catalog="promoat" ref-columns="idDepartamento" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkempleadoscivil" columns="idCivil" ref-table="civil" ref-schema="" ref-catalog="promoat" ref-columns="idCivil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkempleadosdomicilios" columns="idDomicilios" ref-table="domicilios" ref-schema="" ref-catalog="promoat" ref-columns="idDomicilios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fknivelestudios" columns="idNivelEstudios" ref-table="nivel_estudios" ref-schema="" ref-catalog="promoat" ref-columns="idNivelEstudios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkperfilesempleados" columns="idPerfil" ref-table="perfiles" ref-schema="" ref-catalog="promoat" ref-columns="idPerfil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkpuesto" columns="idPuesto" ref-table="puesto" ref-schema="" ref-catalog="promoat" ref-columns="idPuesto" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkstatusempleado" columns="idStatusEmpleado" ref-table="status_empleado" ref-schema="" ref-catalog="promoat" ref-columns="idStatusEmpelado" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkturno" columns="idTurno" ref-table="turno" ref-schema="" ref-catalog="promoat" ref-columns="idTurno" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkempleado" table="orden_trabajo" schema="" catalog="promoat" columns="idEmpleado"/>
       <index name="fkdepartamento" unique="false" columns="idDepartamento"/>
+      <index name="fkempleadoscivil" unique="false" columns="idCivil"/>
+      <index name="fkempleadosdomicilios" unique="false" columns="idDomicilios"/>
+      <index name="fknivelestudios" unique="false" columns="idNivelEstudios"/>
+      <index name="fkperfilesempleados" unique="false" columns="idPerfil"/>
+      <index name="fkpuesto" unique="false" columns="idPuesto"/>
+      <index name="fkstatusempleado" unique="false" columns="idStatusEmpleado"/>
+      <index name="fkturno" unique="false" columns="idTurno"/>
     </table>
-    <table name="maquilador" schema="" catalog="promocionat" type="TABLE">
+    <table name="maquilador" schema="" catalog="promoat" type="TABLE">
       <column name="idMaquilador" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="nombre" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
-      <column name="descripción" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="nombre" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="descripción" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idMaquilador"/>
-      <exported-key name="fkmaquilador" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idMaquilador"/>
+      <foreign-key name="fkmaquiladordomicilios" columns="idDomicilios" ref-table="domicilios" ref-schema="" ref-catalog="promoat" ref-columns="idDomicilios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkmaquilador" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idMaquilador"/>
+      <index name="fkmaquiladordomicilios" unique="false" columns="idDomicilios"/>
     </table>
-    <table name="orden_trabajo" schema="" catalog="promocionat" type="TABLE">
+    <table name="modulo" schema="" catalog="promoat" type="TABLE">
+      <column name="idModulo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Descripcion" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idModulo"/>
+      <exported-key name="fkModulos" table="modulo_perfiles" schema="" catalog="promoat" columns="idModulo"/>
+    </table>
+    <table name="modulo_perfiles" schema="" catalog="promoat" type="TABLE">
+      <column name="idModuloPerfiles" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="idModulo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idPerfiles" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idModuloPerfiles"/>
+      <foreign-key name="fkModulos" columns="idModulo" ref-table="modulo" ref-schema="" ref-catalog="promoat" ref-columns="idModulo" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkPerfiles" columns="idPerfiles" ref-table="perfiles" ref-schema="" ref-catalog="promoat" ref-columns="idPerfil" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fkModulos" unique="false" columns="idModulo"/>
+      <index name="fkPerfiles" unique="false" columns="idPerfiles"/>
+    </table>
+    <table name="nivel_estudios" schema="" catalog="promoat" type="TABLE">
+      <column name="idNivelEstudios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripción" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idNivelEstudios"/>
+      <exported-key name="fknivelestudios" table="empleados" schema="" catalog="promoat" columns="idNivelEstudios"/>
+    </table>
+    <table name="orden_trabajo" schema="" catalog="promoat" type="TABLE">
       <column name="idOrdenTrabajo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idCliente" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="idEmpleado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="fechaAlta" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
-      <column name="ordenCompraCliente" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="cita" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
-      <column name="lugardeEntrega" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fechaAlta" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="ordenCompraCliente" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="cita" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="autorizaGteVtas" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="autorizaDir" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <primary-key name="PRIMARY" columns="idOrdenTrabajo"/>
-      <foreign-key name="fkcliente" columns="idCliente" ref-table="cliente" ref-schema="" ref-catalog="promocionat" ref-columns="idCliente" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkempleado" columns="idEmpleado" ref-table="empleados" ref-schema="" ref-catalog="promocionat" ref-columns="idEmpleado" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="fkorden_trabajo" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idOrdenTrabajo"/>
+      <foreign-key name="fkcliente" columns="idCliente" ref-table="cliente" ref-schema="" ref-catalog="promoat" ref-columns="idCliente" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkempleado" columns="idEmpleado" ref-table="empleados" ref-schema="" ref-catalog="promoat" ref-columns="idEmpleado" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkorden_trabajodomicilios" columns="idDomicilios" ref-table="domicilios" ref-schema="" ref-catalog="promoat" ref-columns="idDomicilios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkorden_trabajo" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idOrdenTrabajo"/>
       <index name="fkcliente" unique="false" columns="idCliente"/>
       <index name="fkempleado" unique="false" columns="idEmpleado"/>
+      <index name="fkorden_trabajodomicilios" unique="false" columns="idDomicilios"/>
     </table>
-    <table name="orden_trabajo_articulo" schema="" catalog="promocionat" type="TABLE">
+    <table name="orden_trabajo_articulo" schema="" catalog="promoat" type="TABLE">
       <column name="idOrden_trabajo_articulo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="idOrdenTrabajo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="idArticulo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -113,13 +170,13 @@
       <column name="idTecnica" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="idStatus" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idOrden_trabajo_articulo"/>
-      <foreign-key name="fkarticulo" columns="idArticulo" ref-table="articulo" ref-schema="" ref-catalog="promocionat" ref-columns="idArticulo" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkmaquilador" columns="idMaquilador" ref-table="maquilador" ref-schema="" ref-catalog="promocionat" ref-columns="idMaquilador" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkorden_trabajo" columns="idOrdenTrabajo" ref-table="orden_trabajo" ref-schema="" ref-catalog="promocionat" ref-columns="idOrdenTrabajo" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkproceso" columns="idProceso" ref-table="proceso" ref-schema="" ref-catalog="promocionat" ref-columns="idProceso" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkproveedor" columns="idProveedor" ref-table="proveedor" ref-schema="" ref-catalog="promocionat" ref-columns="idProveedor" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fkstatus_orden_trabajo_articulo" columns="idStatus" ref-table="status_orden_trabajo_articulo" ref-schema="" ref-catalog="promocionat" ref-columns="idStatus" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="fktecnica" columns="idTecnica" ref-table="tecnica" ref-schema="" ref-catalog="promocionat" ref-columns="idTecnica" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkarticulo" columns="idArticulo" ref-table="articulo" ref-schema="" ref-catalog="promoat" ref-columns="idArticulo" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkmaquilador" columns="idMaquilador" ref-table="maquilador" ref-schema="" ref-catalog="promoat" ref-columns="idMaquilador" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkorden_trabajo" columns="idOrdenTrabajo" ref-table="orden_trabajo" ref-schema="" ref-catalog="promoat" ref-columns="idOrdenTrabajo" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkproceso" columns="idProceso" ref-table="proceso" ref-schema="" ref-catalog="promoat" ref-columns="idProceso" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkproveedor" columns="idProveedor" ref-table="proveedor" ref-schema="" ref-catalog="promoat" ref-columns="idProveedor" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fkstatus_orden_trabajo_articulo" columns="idStatus" ref-table="status_orden_trabajo_articulo" ref-schema="" ref-catalog="promoat" ref-columns="idStatus" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fktecnica" columns="idTecnica" ref-table="tecnica" ref-schema="" ref-catalog="promoat" ref-columns="idTecnica" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fkarticulo" unique="false" columns="idArticulo"/>
       <index name="fkmaquilador" unique="false" columns="idMaquilador"/>
       <index name="fkorden_trabajo" unique="false" columns="idOrdenTrabajo"/>
@@ -128,42 +185,72 @@
       <index name="fkstatus_orden_trabajo_articulo" unique="false" columns="idStatus"/>
       <index name="fktecnica" unique="false" columns="idTecnica"/>
     </table>
-    <table name="proceso" schema="" catalog="promocionat" type="TABLE">
-      <column name="idProceso" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="descripcion" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
-      <primary-key name="PRIMARY" columns="idProceso"/>
-      <exported-key name="fkproceso" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idProceso"/>
+    <table name="perfiles" schema="" catalog="promoat" type="TABLE">
+      <column name="idPerfil" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nivel" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idPerfil"/>
+      <exported-key name="fkperfilesempleados" table="empleados" schema="" catalog="promoat" columns="idPerfil"/>
+      <exported-key name="fkPerfiles" table="modulo_perfiles" schema="" catalog="promoat" columns="idPerfiles"/>
     </table>
-    <table name="proveedor" schema="" catalog="promocionat" type="TABLE">
+    <table name="proceso" schema="" catalog="promoat" type="TABLE">
+      <column name="idProceso" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idProceso"/>
+      <exported-key name="fkproceso" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idProceso"/>
+    </table>
+    <table name="proveedor" schema="" catalog="promoat" type="TABLE">
       <column name="idProveedor" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="clave" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
       <column name="estatus" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
       <column name="nombre" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
       <column name="rfc" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
-      <column name="calle" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
-      <column name="colonia" sqlType="VARCHAR" precision="80" scale="0" nullable="false" jdbcType="12"/>
-      <column name="codigoPostal" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="municipio" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="estado" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
-      <column name="pais" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="idDomicilios" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="telefonoCliente" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="nombreContacto" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="telefonoContacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="emailContacto" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idProveedor,clave"/>
-      <exported-key name="fkproveedor" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idProveedor"/>
+      <foreign-key name="fkproveedordomicilio" columns="idDomicilios" ref-table="domicilios" ref-schema="" ref-catalog="promoat" ref-columns="idDomicilios" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fkproveedor" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idProveedor"/>
+      <index name="fkproveedordomicilio" unique="false" columns="idDomicilios"/>
     </table>
-    <table name="status_orden_trabajo_articulo" schema="" catalog="promocionat" type="TABLE">
+    <table name="puesto" schema="" catalog="promoat" type="TABLE">
+      <column name="idPuesto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripción" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idPuesto"/>
+      <exported-key name="fkpuesto" table="empleados" schema="" catalog="promoat" columns="idPuesto"/>
+    </table>
+    <table name="status_empleado" schema="" catalog="promoat" type="TABLE">
+      <column name="idStatusEmpelado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Descripción" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idStatusEmpelado"/>
+      <exported-key name="fkstatusempleado" table="empleados" schema="" catalog="promoat" columns="idStatusEmpleado"/>
+    </table>
+    <table name="status_orden_trabajo_articulo" schema="" catalog="promoat" type="TABLE">
       <column name="idStatus" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="descripcion" sqlType="CHAR" precision="10" scale="0" nullable="false" jdbcType="1"/>
       <primary-key name="PRIMARY" columns="idStatus"/>
-      <exported-key name="fkstatus_orden_trabajo_articulo" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idStatus"/>
+      <exported-key name="fkstatus_orden_trabajo_articulo" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idStatus"/>
     </table>
-    <table name="tecnica" schema="" catalog="promocionat" type="TABLE">
+    <table name="tecnica" schema="" catalog="promoat" type="TABLE">
       <column name="idTecnica" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="descripcionTecnica" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="descripcionTecnica" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="idTecnica"/>
-      <exported-key name="fktecnica" table="orden_trabajo_articulo" schema="" catalog="promocionat" columns="idTecnica"/>
+      <exported-key name="fktecnica" table="orden_trabajo_articulo" schema="" catalog="promoat" columns="idTecnica"/>
+    </table>
+    <table name="turno" schema="" catalog="promoat" type="TABLE">
+      <column name="idTurno" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="descripcion" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idTurno"/>
+      <exported-key name="fkturno" table="empleados" schema="" catalog="promoat" columns="idTurno"/>
+    </table>
+    <table name="users" schema="" catalog="promoat" type="TABLE">
+      <column name="idUser" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="CQk=" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fechaCreacion" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="idUser"/>
     </table>
   </data-source>
 </component>
