@@ -83,6 +83,20 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                
+                <!-- Seccion de tecnica-->
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> Tecnicas<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?= base_url('tecnica/tecnicaAlta') ?>">Alta</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('tecnica/mostrarTecnica') ?>">Consulta</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
             </ul>
         </div>
