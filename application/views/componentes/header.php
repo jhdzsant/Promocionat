@@ -77,13 +77,32 @@
                         <li>
                             <a href="<?= base_url('empleados/empleadosAlta') ?>">Alta</a>
                         </li>
+
                         <li>
                             <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>
                         </li>
+
+
+                        <!-- Tercer nivel -->
+                        <li>
+                            <a href="#"><i class="fa fa-male fa-fw"></i> Catalogos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+
+                                <li>
+                                    <a href="<?= base_url('empleados/nivelEstudios') ?>">Nivel de Estudios</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
-                
+
+
+
+
+
                 <!-- Seccion de tecnica-->
                 <li>
                     <a href="#"><i class="fa fa-users fa-fw"></i> Tecnicas<span class="fa arrow"></span></a>

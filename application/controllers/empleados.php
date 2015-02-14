@@ -11,8 +11,9 @@ class Empleados extends CI_Controller{
     public function __construct(){
         parent::__construct();
         /* va a mandar a llamar el modelo de empleados
-        $this->load->model('empleadoModelo');
-    */
+        */
+        $this->load->model('empleadomodelo');
+
 
         }
 
@@ -38,6 +39,44 @@ class Empleados extends CI_Controller{
         $dato['titulo'] = 'Alta de Empleados';
         $this->load->view('index',$dato);
     }
+
+
+    function nivelEstudios(){
+
+        $dato['contenido'] = 'empleados/nivelEstudios';
+        $dato['header'] = 'componentes/header';
+        $dato['sidebar'] = 'partials/sidebar';
+        $dato['titulo'] = 'Nivel de estudios';
+        $this->load->view('index',$dato);
+    }
+
+
+
+
+
+    function addNivelEstudios(){
+
+
+        $descripcion = $this->input->post('nivelEstudios');
+
+
+
+        $insert = array(
+            "descripción" => $descripcion
+        );
+
+        $resultado = $this->empleadomodelo->addNivelEstudios($insert);
+        if( $resultado == TRUE ){
+
+            redirect (base_url('empleados/nivelEstudios'), 'refresh');
+
+        }
+
+    }
+
+
+
+
 
 
 
