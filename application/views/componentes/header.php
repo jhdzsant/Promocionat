@@ -50,6 +50,19 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                <!-- Seccion de proveedores -->
+                <li>
+                    <a href="#"><i class="fa fa-users fa-fw"></i> Proveedores<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="<?= base_url('proveedor/proveedorAlta') ?>">Alta</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('proveedor/mostrarProveedor') ?>">Consulta</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
 
                 <!-- Seccion de clientes -->
