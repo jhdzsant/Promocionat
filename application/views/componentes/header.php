@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?= base_url('home') ?>"><strong>Promocionat</strong><span style="opacity:0.3"> admin</span></a>
+        <a class="navbar-brand" href="<?= base_url('home') ?>"><img src="img/logo.png" width="125" height="40"   padding-left="20px"/></a>
     </div>
     <!-- /.navbar-header -->
 

@@ -2,136 +2,173 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <form class="col-lg-12 form-horizontal" action='<?= base_url('cliente/addCliente') ?>' method="POST">
+            <!-- Comienza grupo -->
+            <form class="col-lg-12 form-horizontal"  action ="<?= base_url('cliente/addCliente') ?>"method="POST">
                 <fieldset>
-                    <h4>
-                        Registro de Cliente
-                        <p></p>
-                    </h4>
-                    <div class="control-group">
-                        <div class="col-lg-6">
-                            <label class="control-label" for="nombre">Nombre</label>
+                    </br>
+                    <div class="panel panel-primary">
 
-                            <div class="controls">
-                                <input type="text" id="nombre" name="nombre" placeholder=""
-                                       class="form-control input-lg" required>
+                        <div class="panel-heading" style=" font-size:20px">Alta de Cliente</div>
+                        <div class="panel-body">
 
-                                <p></p>
+                            <div class="control-group">
+                                <div class="col-lg-3">
+                                    <label class="control-label">Clave</label>
+
+                                    <div class="controls">
+                                        <input type="text" name="clave" placeholder="Obligatorio"
+                                               class="form-control input-sm" required>
+
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="control-label">Nombre</label>
+
+                                    <div class="controls">
+                                        <input type="text" name="nombre" placeholder="Obligatorio"
+                                               class="form-control input-sm" required>
+
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="control-label">Estatus</label>
+                                    <div class="controls">
+                                        <input type="text" name="estatus" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="clave">Clave</label>
-
-                            <div class="controls">
-                                <input type="text" id="clave" name="clave" placeholder=""
-                                       class="form-control input-lg" required>
-
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                        <label class="control-label" for="rfc">RFC</label>
-                        <div class="controls">
-                            <input type="text" id="rfc" name="rfc" placeholder="" class="form-control input-lg" required>
-                            <p class="small help-block"></p>
-                        </div>
-                        </div>
-
-
-                        <div class="col-lg-6">
-                            <label class="control-label" for="calle">Calle</label>
-                            <div class="controls">
-                                <input type="text" id="calle" name="calle" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
+                            <!-- Termina grupo -->
 
 
-                        <div class="col-lg-3">
-                            <label class="control-label" for="estatus">Estatus</label>
-                            <div class="controls">
-                                <input type="text" id="estatus" name="estatus" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <label class="control-label" for="colonia">Colonia</label>
-                            <div class="controls">
-                                <input type="text" id="colonia" name="colonia" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
+
+                            <!-- comienza grupo -->
+
+                            <div class="control-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label">RFC</label>
+                                    <div class="controls">
+                                        <input type="text" name="rfc" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-3">
+                                    <label class="control-label">Calle y Número</label>
+                                    <div class="controls">
+                                        <input type="text" name="callenumero" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <label class="control-label">Colonia</label>
+                                    <div class="controls">
+                                        <input type="email" name="colonia" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label class="control-label">Delegación/Municipio</label>
+                                    <div class="controls">
+                                        <input type="text"  name="delegacionMunicipio" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p ></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label class="control-label">Estado</label>
+                                    <div class="controls">
+                                        <input type="text"name="estado" placeholder="" class="form-control input-sm">
+                                        <p></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="codigoPostal">Codigo Postal</label>
-                            <div class="controls">
-                                <input type="text" id="codigoPostal" name="codigoPostal" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="municipio">Municipio</label>
-                            <div class="controls">
-                                <input type="text" id="municipio" name="municipio" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="estado">Estado</label>
-                            <div class="controls">
-                                <input type="text" id="estado" name="estado" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="pais">Pais</label>
-                            <div class="controls">
-                                <input type="text" id="pais" name="pais" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="telefonoCliente">Telefono del Cliente</label>
-                            <div class="controls">
-                                <input type="text" id="telefonoCliente" name="telefonoCliente" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="control-label" for="nombreContacto">Nombre del Contacto</label>
-                            <div class="controls">
-                                <input type="text" id="nombreContacto" name="nombreContacto" placeholder="" class="form-control input-lg" required>
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <label class="control-label" for="telefonoContacto">Telefono del Contacto</label>
-                            <div class="controls">
-                                <input type="text" id="telefonoContacto" name="telefonoContacto" placeholder="" class="form-control input-lg">
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="control-label" for="emailContacto">E-mail del Contacto</label>
-                            <div class="controls">
-                                <input type="email" id="emailContacto" name="emailContacto" placeholder="" class="form-control input-lg">
-                                <p class="small help-block"></p>
-                            </div>
-                        </div>
-                    </div>
+                            <!-- Termina grupo -->
+
+
+
+                            <!-- Comienza grupo -->
+
+                            <div class="control-group">
+                                <div class="col-lg-2">
+                                    <label class="control-label">Código Postal</label>
+                                    <div class="controls">
+                                        <input type="text"name="codigoPostal" placeholder="" class="form-control input-sm">
+                                        <p></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-2">
+                                    <label class="control-label">País</label>
+                                    <div class="controls">
+                                        <input type="text" name="pais" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-3">
+                                    <label class="control-label">Telefono del Cliente</label>
+                                    <div class="controls">
+                                        <input type="text" name="telefonoCliente" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="control-label">Nombre del Contacto</label>
+                                    <div class="controls">
+                                        <input type="text" name="nombreContacto" placeholder="" class="form-control input-sm">
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <label class="control-label">Telefono Contacto</label>
+                                    <div class="controls">
+                                        <input type="text"name="telefonoContacto" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label class="control-label">E-mail Contacto</label>
+                                    <div class="controls">
+                                        <input type="text"name="emailContacto" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <p></p>
+                                    </div>
+                                </div>
+
+                                <!-- Termina grupo -->
+
+
+
+
+
+                                        <div class="col-lg-2">
+                                            </br>
+                                            <input type="submit" class="btn btn-success" value="Guardar">
+                                        </div>
+
+                                        <div class="col-lg-2">
+                                            </br>
+                                            <input type="reset" class="btn btn-default" value="Limpiar">
+                                        </div>
 
                 </fieldset>
-                    <div class="col-lg-3">
-                        <div class="control-group">
-                            <div class="controls">
-                                <button class="btn btn-success" type="submit">Register</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-        </div>
-        <!-- /.row -->
+            </form>
+            <!-- /.col-lg-12 -->
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.row -->
 </div>
-<!-- /#page-wrapper -->
+<!-- /.container-fluid -->
+
+

@@ -12,7 +12,7 @@ class Login_model extends CI_Model{
 
     public function loginUser($email,$password){
         $this->db->where("correoElectronico", $email);
-        $this->db->where("contraseña", $password);
+        $this->db->where("contrasena", $password);
         $query = $this->db->get("empleados");
         if($query->num_rows() == 1){
             return true;
