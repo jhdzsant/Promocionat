@@ -10,66 +10,51 @@
                         <h4>Clientes</h4>
                     </div>
                     <div class="panel-body panel-refresh" id="userListPanel">
-                        <div class="table-responsive">
-                            <table id="user-signups" class="table table-striped table-bordered" id="dataTables-example">
+                        <div class="table-responsive" ng-show="filteredItems > 0">
+                            <table id="user-signups" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th class="hidden-xs">Id</th>
                                     <th class="hidden-xs">Clave</th>
                                     <th class="hidden-xs">Estatus</th>
-                                    <th class="hidden-xs">Nombre del Cliente</th>
-                                    <th class="hidden-xs">RFC del Cliente</th>
-                                    <th class="hidden-xs">Calle</th>
+                                    <th class="hidden-xs">Nombre</th>
+                                    <th class="hidden-xs">RFC</th>
+                                    <th class="hidden-xs">Calle y Numero</th>
                                     <th class="hidden-xs">Colonia</th>
-                                    <th class="hidden-xs">Codigo Postal</th>
-                                    <th class="hidden-xs">Municipio</th>
+                                    <th class="hidden-xs">Delegación/Municipio</th>
                                     <th class="hidden-xs">Estado</th>
+                                    <th class="hidden-xs">Código Postal</th>
                                     <th class="hidden-xs">País</th>
                                     <th class="hidden-xs">Telefono del Cliente</th>
                                     <th class="hidden-xs">Nombre del Contacto</th>
                                     <th class="hidden-xs">Telefono del Contacto</th>
                                     <th class="hidden-xs">E-mail del Contacto</th>
-
+                                    <th class="hidden-xs">Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody class="refresh-container">
-                                <?php foreach($cliente as $fila){ ?>
+                                <?php foreach($datos as $fila){ ?>
 
                                     <tr>
-                                        <td id="idCliente"><?php echo  $fila->idCliente ?></td>
-                                        <td id="clave"><?php echo $fila->clave ?></td>
-                                        <td id="estatus"> <?php echo $fila->estatus ?> </td>
-                                        <td id="nombre"> <?php echo $fila->nombre ?> </td>
-                                        <td id="rfc"> <?php echo $fila->rfc ?> </td>
-                                        <td id="calle"> <?php echo $fila->calle ?> </td>
-                                        <td id="colonia"> <?php echo $fila->colonia ?> </td>
-                                        <td id="codigoPostal"> <?php echo $fila->codigoPostal ?> </td>
-                                        <td id="municipio"> <?php echo $fila->municipio ?> </td>
-                                        <td id="estado"> <?php echo $fila->estado ?> </td>
-                                        <td id="pais"> <?php echo $fila->pais ?> </td>
-                                        <td id="telefonoCliente"> <?php echo $fila->telefonoCliente ?> </td>
-                                        <td id="nombreContacto"> <?php echo $fila->nombreContacto ?> </td>
-                                        <td id="telefonoContacto"> <?php echo $fila->telefonoContacto ?> </td>
-                                        <td id="emailContacto"> <?php echo $fila->emailContacto ?> </td>
+                                        <td class="hidden-xs"><?php echo  $fila->clave;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->estatus;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->nombre;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->rfc;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->calleNumero;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->colonia;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->delegacionMunicipio;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->estado;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->codigoPostal;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->pais;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->telefonoCliente;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->nombreContacto;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->telefonoContacto;?></td>
+                                        <td class="hidden-xs"><?php echo  $fila->emailContacto;?></td>
 
+                                        <td> <a href= <?= "'".base_url('tecnica/editarTecnica/')."/".$fila->idProveedor."'";?> > <button type="button" class="btn btn-primary">Editar</button> </a> <a href= <?= "'".base_url('tecnica/borrarProveedor/')."/".$fila->idProveedor."'";?> ><button type="button" class="btn btn-danger">Eliminar</button></a>
                                     </tr>
                                 <?php } ?>
                                 </tbody>
-                                <tfoot>
-                                <tr><td colspan="6">
-                                        <div class="text-center">
-                                            <ul class="pagination">
-                                                <li >
-                                                    <a class="btn btn-default btn-sm" ><i class=" fa fa-angle-left"></i> Prev</a>
-                                                </li>
-                                                <li >
-                                                    <a class="btn btn-default btn-sm" href="" ng-click="">Next <i class="fa fa-angle-right"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tfoot>
+
                             </table>
                         </div> <!--/.table-responsive-->
                     </div><!--/.panel-body-->
@@ -82,11 +67,3 @@
         <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
-    <script>
-        $(document).ready(function() {
-            $('#dataTables-example').DataTable({
-                responsive: true
-            });
-        });
-    </script>

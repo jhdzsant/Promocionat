@@ -10,6 +10,7 @@ class Cliente extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model('clientemodelo');
+        $this->load->model('domiciliomodelo');
     }
 
     function index(){
@@ -25,15 +26,26 @@ class Cliente extends CI_Controller{
     }
     function getCliente(){
 
-            $cliente = $this->clientemodelo->getCliente();
-            $dato['contenido'] = 'cliente/clienteconsulta';
-            $dato['header'] = 'componentes/header';
-            $dato['titulo'] = 'Clientes';
-            $dato['cliente'] = $cliente;
-            $this->load->view('index',$dato);
+        $dato['contenido'] 	= 'cliente/clienteconsulta';
+        $dato['header'] 	= 'componentes/header';
+        $dato['sidebar']    = 'partials/sidebar';
+        $dato['titulo'] 	= 'Cliente';
+        $dato['datos']		= $this->clientemodelo->getCliente();
 
+        $this->load->view('index', $dato);
 
     }
+
+    function mostrarProveedor(){
+
+        $dato['contenido'] 	= 'cliente/clienteconsulta';
+        $dato['header'] 	= 'componentes/header';
+        $dato['titulo'] 	= 'Clentes';
+        $dato['datos']		= $this->clientemodelo->getCliente();
+
+        $this->load->view('index', $dato);
+    }
+
     /* En esta seccion hace referencia a la vista de alta de Clientes */
     function altaCliente()
     {
@@ -51,10 +63,10 @@ class Cliente extends CI_Controller{
         $clave       = $this->input->post('clave');
         $estatus     = $this->input->post('estatus');
         $rfc         = $this->input->post('rfc');
-        $calle       = $this->input->post('calle');
+        $calleNumero       = $this->input->post('calleNumero');
         $colonia     = $this->input->post('colonia');
         $codigoPostal= $this->input->post('codigoPostal');
-        $municipio   = $this->input->post('municipio');
+        $delegacionMunicipio   = $this->input->post('delegacionMunicipio');
         $estado      = $this->input->post('estado');
         $pais        = $this->input->post('pais');
         $telefonoCliente = $this->input->post('telefonoCliente');
@@ -63,7 +75,7 @@ class Cliente extends CI_Controller{
         $emailContacto   = $this->input->post('emailContacto');
 
 
-        $dato = $this->clientemodelo->addCliente($clave, $estatus,$nombre ,$rfc ,$calle ,$colonia ,$codigoPostal,$municipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto);
+        $dato = $this->clientemodelo->addCliente($clave, $estatus,$nombre ,$rfc ,$calleNumero ,$colonia ,$codigoPostal,$delegacionMunicipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto);
         if($dato = TRUE){
             redirect(base_url('cliente/altaCliente'));
 

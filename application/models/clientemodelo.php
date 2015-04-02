@@ -14,27 +14,29 @@ class ClienteModelo extends CI_Model{
     function getCliente(){
 
         $consulta = $this->db->get('cliente');
-        if ($consulta->num_rows() > 0) {
-            foreach ($consulta->result() as $fila) {
-                $data[] = $fila;
-            }
-           return $data;
 
-        }
+        return $consulta->result();
     }
 
-    function addCliente($clave, $estatus,$nombre ,$rfc ,$calle ,$colonia ,$codigoPostal,$municipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto){
+    function addCliente($clave, $estatus,$nombre ,$rfc ,$calleNumero ,$colonia ,$codigoPostal,$delegacionMunicipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto){
+        $insertDomicilio = array(
+            "calleNumero"           => $calleNumero,
+            "colonia"               => $colonia,
+            "delegacionMunicipio"   => $delegacionMunicipio,
+            "estado"                => $estado,
+            "codigoPostal"          => $codigoPostal,
+            "pais"                  => $pais
+        );
+        //domicilioID recibe lo que se haya regresado del domiciliomodelo.
+        $domicilioId = $this->domiciliomodelo->agregarDomicilio( $insertDomicilio );
+
+
         $insert = array(
             "clave"    => $clave,
             "estatus" => $estatus,
             "nombre" => $nombre,
             "rfc" => $rfc,
-            "calle" => $calle,
-            "colonia" => $colonia,
-            "codigoPostal" => $codigoPostal,
-            "municipio" => $municipio,
-            "estado" => $estado,
-            "pais" =>  $pais,
+            "idDomicilios"      => $domicilioId,
             "telefonoCliente" => $telefonoCliente,
             "nombreContacto" => $nombreContacto,
             "telefonoContacto" => $telefonoContacto,

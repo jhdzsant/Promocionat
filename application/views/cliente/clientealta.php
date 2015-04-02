@@ -70,7 +70,7 @@
                                 <div class="col-lg-2">
                                     <label class="control-label">Colonia</label>
                                     <div class="controls">
-                                        <input type="email" name="colonia" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <input type="text" name="colonia" placeholder="Obligatorio" class="form-control input-sm" required>
                                         <p></p>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@
                                 <div class="col-lg-4">
                                     <label class="control-label">E-mail Contacto</label>
                                     <div class="controls">
-                                        <input type="text"name="emailContacto" placeholder="Obligatorio" class="form-control input-sm" required>
+                                        <input type="email"name="emailContacto" placeholder="Obligatorio" class="form-control input-sm" required>
                                         <p></p>
                                     </div>
                                 </div>
