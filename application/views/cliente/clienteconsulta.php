@@ -50,7 +50,7 @@
                                         <td class="hidden-xs"><?php echo  $fila->telefonoContacto;?></td>
                                         <td class="hidden-xs"><?php echo  $fila->emailContacto;?></td>
 
-                                        <td> <a href= <?= "'".base_url('tecnica/editarTecnica/')."/".$fila->idProveedor."'";?> > <button type="button" class="btn btn-primary">Editar</button> </a> <a href= <?= "'".base_url('tecnica/borrarProveedor/')."/".$fila->idProveedor."'";?> ><button type="button" class="btn btn-danger">Eliminar</button></a>
+                                        <td> <a href= <?= "'".base_url('cliente/editarCliente/')."/".$fila->idCliente."'";?> > <button type="button" class="btn btn-primary">Editar</button> </a> <a href= <?= "'".base_url('cliente/borrarCliente/')."/".$fila->idCliente."'";?> ><button type="button" class="btn btn-danger">Eliminar</button></a>
                                     </tr>
                                 <?php } ?>
                                 </tbody>

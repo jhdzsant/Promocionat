@@ -36,16 +36,6 @@ class Cliente extends CI_Controller{
 
     }
 
-    function mostrarProveedor(){
-
-        $dato['contenido'] 	= 'cliente/clienteconsulta';
-        $dato['header'] 	= 'componentes/header';
-        $dato['titulo'] 	= 'Clentes';
-        $dato['datos']		= $this->clientemodelo->getCliente();
-
-        $this->load->view('index', $dato);
-    }
-
     /* En esta seccion hace referencia a la vista de alta de Clientes */
     function altaCliente()
     {
@@ -85,28 +75,7 @@ class Cliente extends CI_Controller{
     }
     /* Fin de Seccion */
 
-    function updUsuario(){
-        $id          = $this->input->post('id');
-        $email       = $this->input->post('nombre');
-        $password    = $this->input->post('apellidopaterno');
-        $dato = $this->usuariomodelo->updUsuario($email, $password, $id);
-        if($dato = TRUE){
-            echo "el usuario se áctualizo correctamente";
-        }else{
-            echo "Ocurrio un error";
-        }
-    }
 
-    function delUsuario()
-    {
-        $id = $this->input->post('id');
-        $dato = $this->usuariomodelo->delUsuario($id);
-        if ($dato = TRUE) {
-            echo "el usuario se borro correctamente";
-        } else {
-            echo "Ocurrio un error";
-        }
-    }
 
     function vistaAngu()
     {
@@ -123,4 +92,38 @@ class Cliente extends CI_Controller{
         print json_encode($cliente);
     }
 
+    function borrarProveedor( $id ){
+
+        $resultado = $this->proveedormodelo->borrarProveedor($id);
+
+        if($resultado == TRUE ){
+            redirect (base_url('proveedor/mostrarProveedor'), 'refresh');
+        }
+
+    }
+
+    function editarProveedor( $id ){
+
+        $registro = $this->clientemodelo->buscarPorId( $id );
+
+        $dato['contenido']  = 'proveedor/actualizarProveedor';
+        $dato['header']     = 'componentes/header';
+        $dato['sidebar']    = 'partials/sidebar';
+        $dato['titulo']     = 'Actualizar Proveedor';
+        $dato['registro']   = $registro;
+
+        $this->load->view('index', $dato);
+
+    }
+
+    function actualizarProveedor( $id ){
+
+        $descripcionTecnica = $this->input->post('descripcionProveedor');
+
+        $respuesta = $this->proveedormodelo->actualizarProveedor ( $descripcionTecnica , $id );
+
+        if( $respuesta == TRUE)
+            redirect (base_url('proveedor/mostrarProveedor'), 'refresh');
+
+    }
 }
