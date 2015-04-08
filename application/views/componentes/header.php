@@ -92,7 +92,7 @@
                         </li>
 
                         <li>
-                            <a href="<?= base_url('cliente/getCliente') ?>">Consulta</a>
+                            <a href="<?= base_url('empleados/consultaEmpleados') ?>">Consulta</a>
                         </li>
 
 

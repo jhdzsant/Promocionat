@@ -3,12 +3,12 @@
   <div class="container-fluid">
     <div class="row">
      
-         <form class="col-lg-12 form-horizontal"  action ='<?= base_url('empleados/empleadosAgregar') ?>'method="POST">
+         <form class="col-lg-12 form-horizontal" action = <?= base_url('empleados/empleadosActualizar/')."/".$registro->idEmpleado?> method="POST">
             <fieldset>
 </br>
                 <div class="panel panel-primary">
 
-                    <div class="panel-heading" style=" font-size:20px">Alta de Empleado
+                    <div class="panel-heading" style=" font-size:20px">Modificar datos de Empleado
                     <label class="control-label" style=" font-size:10px">*Campo Obligatorio</label> 
                     </div>
                        
@@ -20,8 +20,7 @@
                                 <label class="control-label">Nombre's *</label>
 
                                 <div class="controls">
-                                    <input type="text" name="nombre" placeholder="" 
-                                           class="form-control input-sm" required>
+                                    <input type="text" name="nombre" placeholder="" class="form-control input-sm" value = <?= $registro->nombre ?> requiered >
 
                                     <p></p>
                                 </div>
@@ -32,8 +31,7 @@
                                 <label class="control-label">Apellido Paterno *</label>
 
                                 <div class="controls">
-                                    <input type="text" name="ApellidoPaterno" placeholder="" 
-                                           class="form-control input-sm" required>
+                                    <input type="text" name="ApellidoPaterno" placeholder=""  class="form-control input-sm" value = <?= $registro->apellidoPaterno ?> requiered>
 
                                     <p></p>
                                 </div>
@@ -43,7 +41,7 @@
                             <div class="col-lg-3">
                                 <label class="control-label">Apellido Materno *</label>
                                 <div class="controls">
-                                    <input type="text" name="ApellidoMaterno" placeholder="" class="form-control input-sm" required>
+                                    <input type="text" name="ApellidoMaterno" placeholder="" class="form-control input-sm" value = <?= $registro->apellidoMaterno ?> required>
                                     <p></p>
                                 </div>
                             </div>
@@ -63,11 +61,19 @@
                             <label class="control-label">Departamento *</label>
                             <div class="controls">
                       <!-- Combo Box -->
-                      <select required class="form-control input-sm" name="idDepartamento">";
+                      <select required class="form-control input-sm" name="idDepartamento" value="1">;
                         <?php
-                          echo "<option value=></option>";
+                        
+                          echo "<option value=> </option>";
                               foreach ($departamentoVar as $list) {
-                              echo "<option value='". $list->idDepartamento . "'>" . $list->descripcion . "</option>";
+
+                                if( $registro->idDepartamento == $list->idDepartamento){
+
+                                    echo "<option value='". $list->idDepartamento . "' selected>" . $list->descripcion . "</option>";
+                                    
+                                } else{
+                                    echo "<option value='". $list->idDepartamento . "'>" . $list->descripcion . "</option>";
+                                }
                             }
                         ?>
                         </select>
