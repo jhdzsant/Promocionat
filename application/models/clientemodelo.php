@@ -12,12 +12,15 @@ class ClienteModelo extends CI_Model{
     }
 
     function getCliente(){
-       $consulta =  $this->db->query('select * from cliente join domicilios on cliente.idDomicilios = domicilios.idDomicilios ');
+       $consulta =  $this->db->query('select *
+                                      from cliente
+                                      join domicilios on cliente.idDomicilios = domicilios.idDomicilios ');
 
         return $consulta->result();
     }
 
     function addCliente($clave, $estatus,$nombre ,$rfc ,$calleNumero ,$colonia ,$codigoPostal,$delegacionMunicipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto){
+
         $insertDomicilio = array(
             "calleNumero"           => $calleNumero,
             "colonia"               => $colonia,
@@ -63,9 +66,12 @@ class ClienteModelo extends CI_Model{
 
     }
 
-
     function actualizarCliente($id,$clave, $estatus,$nombre ,$rfc ,$calleNumero ,$colonia ,$codigoPostal,$delegacionMunicipio, $estado, $pais, $telefonoCliente, $nombreContacto, $telefonoContacto, $emailContacto){
-        $insertDomicilio = array(
+
+        $datosCliente = $this->buscarPorId( $id );
+        $idDomicilio  = $datosCliente->idDomicilio;
+
+        $updDomicilio = array(
             "calleNumero"           => $calleNumero,
             "colonia"               => $colonia,
             "delegacionMunicipio"   => $delegacionMunicipio,
@@ -73,24 +79,29 @@ class ClienteModelo extends CI_Model{
             "codigoPostal"          => $codigoPostal,
             "pais"                  => $pais
         );
+
         //domicilioID recibe lo que se haya regresado del domiciliomodelo.
-        $domicilioId = $this->domiciliomodelo->actualizarDomicilio( $insertDomicilio );
+        $domicilioId = $this->domiciliomodelo->actualizarDomicilio( $updDomicilio , $idDomicilio );
 
 
         $upd = array(
 
-            "clave"    => $clave,
-            "estatus" => $estatus,
-            "nombre" => $nombre,
-            "rfc" => $rfc,
+            "clave"             => $clave,
+            "estatus"           => $estatus,
+            "nombre"            => $nombre,
+            "rfc"               => $rfc,
             "idDomicilios"      => $domicilioId,
-            "telefonoCliente" => $telefonoCliente,
-            "nombreContacto" => $nombreContacto,
-            "telefonoContacto" => $telefonoContacto,
-            "emailContacto" => $emailContacto
+            "telefonoCliente"   => $telefonoCliente,
+            "nombreContacto"    => $nombreContacto,
+            "telefonoContacto"  => $telefonoContacto,
+            "emailContacto"     => $emailContacto
+
         );
-        $this->db->update('cliente', $upd);
+
         $this->db->where('idCliente', $id);
+        $this->db->update('cliente', $upd);
+
         return true;
+
     }
 }

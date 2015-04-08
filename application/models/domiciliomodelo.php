@@ -15,6 +15,15 @@ class DomicilioModelo extends CI_Model{
         
     }
 
+    function actualizarDomicilio( $updDomicilio , $idDomicilio ){
+
+        $this->db->where('idDomicilio', $idDomicilio);
+        $this->db->update('domicilios', $updDomicilio );
+
+        return $this->db->true;
+
+    }
+
 
 }
 
